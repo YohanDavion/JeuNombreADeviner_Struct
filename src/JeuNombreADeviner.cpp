@@ -61,6 +61,10 @@ void JouerPartie(TJoueur &un_joueur, int nombreADeviner)
 {
     int nbrproposer =0;
     int essais =0;
+    int nbrpartie =0;
+
+    cout<<"Combien de partie voulez-vous jouer ?"<<endl;
+    cin>> nbrpartie;
 
     cout<<"Essayez de deviner le nombre :"<<endl;
     cin>> nbrproposer;
@@ -88,10 +92,12 @@ void JouerPartie(TJoueur &un_joueur, int nombreADeviner)
     if (essais >= 4)
     {
         cout<<"Perdu ! Tu n'as pas reussi a trouver le nombre en "<<essais<<" essais."<<endl;
+        MajResultatsJoueur(un_joueur,essais,false);
     }
     else if (nombreADeviner = nbrproposer)
     {
         cout<<"Bravo vous avez trouve le nombre en "<<essais<<" essais."<<endl;
+        MajResultatsJoueur(un_joueur,essais,true);
     }
 }
 // Nom : MajResultatsJoueur
@@ -104,7 +110,11 @@ void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
 {
     joueur.nbPartiesJouees++;
     joueur.nbTentatives = joueur.nbTentatives + nbEssais;
-
+    cout<<"------------------------------------"<<endl;
+    cout<<"Nombres de parties jouee : "<<joueur.nbPartiesJouees<<""<<endl;
+    cout<<"Nombres de tentatives : "<<joueur.nbTentatives<<""<<endl;
+    cout<<"Nombres de parties gagnees : "<<joueur.nbPartiesGagnees<<""<<endl;
+    cout<<"------------------------------------"<<endl;
     if (gagne)
     {
         joueur.nbPartiesGagnees++;
