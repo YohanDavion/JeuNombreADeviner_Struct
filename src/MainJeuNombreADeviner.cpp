@@ -16,7 +16,9 @@ using namespace std;
 
 int main()
 {
-
+    TJoueur Joueur1;
+    InitJoueur(Joueur1,"test");
+    JouerPartie(Joueur1,TirerNombreMystere());
 
     return 0;
 }

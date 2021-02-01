@@ -47,7 +47,6 @@ int TirerNombreMystere()
     srand (time(NULL));
     /* generate secret number between 1 and 10 */
     nombreADeviner = rand() % 10 + 1;
-        return -1;
 }
 
 
@@ -67,8 +66,7 @@ void JouerPartie(TJoueur &un_joueur, int nombreADeviner)
     cin>> nbrproposer;
     essais++;
 
-    while (essais < 5){
-        while (nombreADeviner != nbrproposer)
+    while (essais <= 3 && nombreADeviner != nbrproposer)
         {
             if (nombreADeviner < nbrproposer)
             {
@@ -87,10 +85,15 @@ void JouerPartie(TJoueur &un_joueur, int nombreADeviner)
                 }
             }
          }
-         cout<<"Bravo vous avez trouve le nombre en "<<essais<<" essais."<<endl;
+    if (essais >= 4)
+    {
+        cout<<"Perdu ! Tu n'as pas reussi a trouver le nombre en "<<essais<<" essais."<<endl;
     }
-    cout<<"Perdu ! Tu as fait plus de 4 essais"<<endl;
-
+    else if (nombreADeviner = nbrproposer)
+    {
+        cout<<"Bravo vous avez trouve le nombre en "<<essais<<" essais."<<endl;
+    }
+}
 // Nom : MajResultatsJoueur
 // Rôle : met à jour les informations du joueur passé en paramètre
 // Paramètres d'entrée:
@@ -99,7 +102,15 @@ void JouerPartie(TJoueur &un_joueur, int nombreADeviner)
 
 void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
 {
-   // A COMPLETER
+    joueur.nbPartiesJouees++;
+    joueur.nbTentatives = joueur.nbTentatives + nbEssais;
+
+    if (gagne)
+    {
+        joueur.nbPartiesGagnees++;
+    }
+
+
 }
 
 // Nom : ResultatsJoueur
