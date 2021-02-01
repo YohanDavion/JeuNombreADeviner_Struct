@@ -11,6 +11,9 @@
 // Historique du fichier:
 /*************************************************/
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
 using namespace std;
 #include "../include/JeuNombreAdeviner.h"
 
@@ -21,9 +24,15 @@ using namespace std;
 // Paramètres de sortie :
 // Paramètres d'entrée/sortie :
 
-void InitJoueur(TJoueur& joueurAcreer, string un_nom)
+void InitJoueur(TJoueur &joueurAcreer, string un_nom)
 {
-    //A COMPLETER
+    //TJoueur j1;
+
+    joueurAcreer.nbPartiesJouees = 0;
+    joueurAcreer.nbPartiesGagnees = 0;
+    joueurAcreer.nbTentatives = 0;
+
+
 }
 
 
@@ -33,7 +42,11 @@ void InitJoueur(TJoueur& joueurAcreer, string un_nom)
 
 int TirerNombreMystere()
 {
-    //A COMPLETER
+   int nombreADeviner;
+    /* initialize random seed: */
+    srand (time(NULL));
+    /* generate secret number between 1 and 10 */
+    nombreADeviner = rand() % 10 + 1;
         return -1;
 }
 
@@ -43,13 +56,40 @@ int TirerNombreMystere()
 //        A la fin, met à jour les informations du joueur
 // Paramètres d'entrée:
 // Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// Paramètres d'entrée/sortie : un_joueur
 
-void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
+void JouerPartie(TJoueur &un_joueur, int nombreADeviner)
 {
-    //A COMPLETER
-}
+    int nbrproposer =0;
+    int essais =0;
 
+    cout<<"Essayez de deviner le nombre :"<<endl;
+    cin>> nbrproposer;
+    essais++;
+
+    while (essais < 5){
+        while (nombreADeviner != nbrproposer)
+        {
+            if (nombreADeviner < nbrproposer)
+            {
+                cout<<"Plus petit"<<endl;
+                cout<<"Essayez de deviner le nombre :"<<endl;
+                cin>> nbrproposer;
+                essais++;
+            }
+            else{
+                if (nombreADeviner > nbrproposer)
+                {
+                    cout<<"Plus grand"<<endl;
+                    cout<<"Essayez de deviner le nombre :"<<endl;
+                    cin>> nbrproposer;
+                    essais++;
+                }
+            }
+         }
+         cout<<"Bravo vous avez trouve le nombre en "<<essais<<" essais."<<endl;
+    }
+    cout<<"Perdu ! Tu as fait plus de 4 essais"<<endl;
 
 // Nom : MajResultatsJoueur
 // Rôle : met à jour les informations du joueur passé en paramètre
@@ -57,7 +97,7 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 // Paramètres de sortie:
 // Paramètres d'entrée/sortie :
 
-void MajResultatsJoueur(TJoueur joueur, int nbEssais, bool gagne)
+void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
 {
    // A COMPLETER
 }
@@ -82,6 +122,6 @@ void ResultatsJoueur(TJoueur joueur, int& nbsucces, int& nbechec, int& nbessais)
 
 string Nom(TJoueur joueur){
 
-    return joueur.nom;
+    return joueur.j1;
 }
 

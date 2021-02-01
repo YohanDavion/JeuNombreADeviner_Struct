@@ -17,7 +17,7 @@ using namespace std;
 
 typedef struct {
 
-string nom;  // nom du joueur
+string j1;  // nom du joueur
 int nbPartiesJouees;
 int nbPartiesGagnees;
 int nbTentatives;
@@ -30,7 +30,7 @@ int nbTentatives;
 // Nom :InitJoueur
 // Rôle : Crée un joueur. Initialise toutes les informations du joueur.
 //        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
-// Paramètres d'entrée :
+// Paramètres d'entrée : Nom du joueur
 // Paramètres de sortie :
 // Paramètres d'entrée/sortie :
 
@@ -58,9 +58,7 @@ void JouerPartie (TJoueur &un_joueur, int nombreADeviner);
 // Paramètres de sortie:
 // Paramètres d'entrée/sortie :
 
-void MajResultatsJoueur(TJoueur joueur, int nbEssais, bool gagne);
-
-
+void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne);
 
 // Nom : ResultatsJoueur
 // Rôle : indique les résultats du joueur passé en paramètre
